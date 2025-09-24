@@ -3,7 +3,7 @@ package com.kata.bowling;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-/**
+/*
  이 게임은 10프레임으로 구성됩니다.
  각 프레임마다 플레이어는 10개의 핀을 쓰러뜨릴 수 있는 두 번의 주사위를 굴립니다.
  각 프레임의 점수는 쓰러뜨린 핀의 총 개수에 스트라이크와 스페어에 대한 보너스를 더한 값입니다.
@@ -23,20 +23,62 @@ import org.junit.jupiter.api.Test;
 
      void roll(int)플레이어가 공을 굴릴 때마다 호출됩니다. 인수는 쓰러진 핀의 개수입니다.
      int score()해당 게임의 총점을 반환합니다.
+=============================================
 
- Game - controller
-    Frame last;
-        Score
-        Trial
-            Status status;
-            Pin lastPin;
-                pin 1개 and restnum 0 - strike
-                pin 2개 and restnum 0 - spare
-                pin 2개 and restnum != 0 - none
+생성자 대신 정적 팩토리 메서드
 
- */
+Game
+    Frame
+    method
+        roll
+        score
+
+Frame
+    FrameCount count
+    Score score
+    method
+        score
+
+FrameCount
+    int count(1~10)
+    method
+        isLastFrame == 10
+        next(roll)
+
+Roll
+    RollCount count
+    Roll prev
+    Pin pin
+    Status status
+    Score score
+    Frame frame
+    : method
+        roll()
+        isFirst() == 1
+        isSecond() == n
+        isBonus() == 3
+        totalScore()
+
+RollCount
+    int count
+
+Pin
+    PinCount stand
+    PinCount down
+    method
+        breakdown()
+
+PinCount
+    int count
+    method
+        add()
+
+Score
+    int score
+*/
 @Slf4j
 class GameTest {
+
     @Test
     void roll() {
         log.info("roll");
