@@ -38,21 +38,11 @@ class PinCountTest {
 
     // breakDown
     @Test
-    void breakDown() {
-        PinCount actual = PinCount.of(10).breakDown(1);
+    void minus() {
+        PinCount actual = PinCount.of().minus(PinCount.of(1));
         PinCount expected = PinCount.of(9);
 
         assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    void breakDown_fail_range() {
-        assertThatThrownBy(() -> PinCount.of(10).breakDown(11))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(EXCEED_REST_PIN_COUNT);
-        assertThatThrownBy(() -> PinCount.of(10).breakDown(-1))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(NOT_ALLOWED_MINUS_BREAKDOWN_PARAMETER);
     }
 
     @Test

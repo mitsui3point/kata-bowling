@@ -41,15 +41,15 @@ public class PinCount {
         return Objects.hash(count);
     }
 
-    public PinCount breakDown(int down) {
-        if (this.count < down) {
+    public PinCount minus(PinCount down) {
+        if (this.count < down.count) {
             throw new IllegalArgumentException(EXCEED_REST_PIN_COUNT);
         }
-        if (down < 0) {
+        if (down.count < 0) {
             throw new IllegalArgumentException(NOT_ALLOWED_MINUS_BREAKDOWN_PARAMETER);
         }
 
-        return new PinCount(this.count - down);
+        return new PinCount(this.count - down.count);
     }
 
     public PinCount rest() {
