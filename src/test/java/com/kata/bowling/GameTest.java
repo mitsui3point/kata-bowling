@@ -63,15 +63,15 @@ RollCount
     int count
 
 Pin
-    PinCount stand
-    PinCount down
+    PinCount pin
     method
         breakdown()
 
 PinCount
-    int count
+    int stand
+    int rest
     method
-        breakDown()
+        minus()
 
 Score
     int score

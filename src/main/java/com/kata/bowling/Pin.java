@@ -4,20 +4,19 @@ import java.util.Objects;
 
 public class Pin {
 
-    private final PinCount stand;
-    private final PinCount down;
+    private final PinCount pinCount;
 
-    public Pin(PinCount stand) {
-        this.stand = stand;
-        this.down = stand.rest();
+    public Pin(PinCount pinCount) {
+        this.pinCount = pinCount;
     }
 
-    public static Pin of(PinCount stand) {
-        return new Pin(stand);
+    public static Pin of(int stand) {
+        return new Pin(PinCount.of(stand));
     }
 
-    public Pin breakDown(PinCount pinCount) {
-        return new Pin(this.stand.minus(pinCount));
+    public Pin breakDown(int breakDown) {
+        PinCount breakDownPin = PinCount.of(breakDown);
+        return new Pin(this.pinCount.minus(breakDownPin));
     }
 
     @Override
@@ -25,11 +24,11 @@ public class Pin {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pin pin = (Pin) o;
-        return Objects.equals(stand, pin.stand) && Objects.equals(down, pin.down);
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(stand, down);
+        return Objects.equals(pinCount, pin.pinCount);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(pinCount);
+    }
 }
