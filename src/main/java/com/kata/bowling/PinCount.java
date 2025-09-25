@@ -5,6 +5,8 @@ import java.util.Objects;
 public class PinCount {
     public static final String EXCEED_PIN_COUNT = "exceed pin count";
     public static final String BELOW_PIN_COUNT = "below pin count";
+    public static final String EXCEED_REST_PIN_COUNT = "exceed rest pin count";
+    public static final String NOT_ALLOWED_MINUS_BREAKDOWN_PARAMETER = "not allowed minus breakdown parameter";
     private final int count;
 
     protected PinCount(int count) {
@@ -12,7 +14,7 @@ public class PinCount {
     }
 
     public static PinCount of(int count) {
-        if (count > 21) {
+        if (count > 10) {
             throw new IllegalArgumentException(EXCEED_PIN_COUNT);
         }
         if (count < 0) {
@@ -32,5 +34,16 @@ public class PinCount {
     @Override
     public int hashCode() {
         return Objects.hash(count);
+    }
+
+    public PinCount breakDown(int down) {
+        if (this.count < down) {
+            throw new IllegalArgumentException(EXCEED_REST_PIN_COUNT);
+        }
+        if (down < 0) {
+            throw new IllegalArgumentException(NOT_ALLOWED_MINUS_BREAKDOWN_PARAMETER);
+        }
+
+        return new PinCount(this.count - down);
     }
 }
