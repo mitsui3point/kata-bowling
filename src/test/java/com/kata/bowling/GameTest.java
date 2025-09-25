@@ -71,7 +71,7 @@ Pin
 PinCount
     int count
     method
-        add()
+        breakDown()
 
 Score
     int score

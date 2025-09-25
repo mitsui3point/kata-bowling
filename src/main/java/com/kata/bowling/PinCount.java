@@ -7,9 +7,10 @@ public class PinCount {
     public static final String BELOW_PIN_COUNT = "below pin count";
     public static final String EXCEED_REST_PIN_COUNT = "exceed rest pin count";
     public static final String NOT_ALLOWED_MINUS_BREAKDOWN_PARAMETER = "not allowed minus breakdown parameter";
+    public static final int DEFAULT_COUNT = 10;
     private final int count;
 
-    protected PinCount(int count) {
+    private PinCount(int count) {
         this.count = count;
     }
 
@@ -21,6 +22,10 @@ public class PinCount {
             throw new IllegalArgumentException(BELOW_PIN_COUNT);
         }
         return new PinCount(count);
+    }
+
+    public static PinCount of() {
+        return new PinCount(DEFAULT_COUNT);
     }
 
     @Override
@@ -46,4 +51,5 @@ public class PinCount {
 
         return new PinCount(this.count - down);
     }
+
 }

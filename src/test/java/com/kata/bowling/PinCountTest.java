@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PinCountTest {
 
-
     @Test
     void create() {
         PinCount actual = PinCount.of(1);
@@ -29,6 +28,14 @@ class PinCountTest {
                 .hasMessage(BELOW_PIN_COUNT);
     }
 
+    @Test
+    void create_default() {
+        PinCount actual = PinCount.of();
+        PinCount expected = PinCount.of(10);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
     // breakDown
     @Test
     void breakDown() {
@@ -47,4 +54,5 @@ class PinCountTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_ALLOWED_MINUS_BREAKDOWN_PARAMETER);
     }
+
 }
