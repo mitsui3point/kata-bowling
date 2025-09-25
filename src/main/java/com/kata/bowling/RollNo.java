@@ -2,7 +2,7 @@ package com.kata.bowling;
 
 import java.util.Objects;
 
-public class RollCount {
+public class RollNo {
 
     public static final String EXCEED_ROLL_COUNT = "exceed roll count";
     public static final String BELOW_ROLL_COUNT = "below roll count";
@@ -10,26 +10,26 @@ public class RollCount {
     private static final int MIN = 0;
     private final int count;
 
-    private RollCount(int count) {
+    private RollNo(int count) {
         this.count = count;
     }
 
-    public static RollCount of(int count) {
+    public static RollNo of(int count) {
         if (count > MAX) {
             throw new IllegalArgumentException(EXCEED_ROLL_COUNT);
         }
         if (count < MIN) {
             throw new IllegalArgumentException(BELOW_ROLL_COUNT);
         }
-        return new RollCount(count);
+        return new RollNo(count);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RollCount rollCount = (RollCount) o;
-        return count == rollCount.count;
+        RollNo rollNo = (RollNo) o;
+        return count == rollNo.count;
     }
 
     @Override

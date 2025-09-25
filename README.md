@@ -66,7 +66,7 @@ Pin
     int stand
     int rest
     ::method
-        minus()
+        breakDown()
 
 Score
     int value
@@ -75,8 +75,4 @@ Status
     NOTHING
     SPARE
     STRIKE
-```
-
-```
-
 ```
