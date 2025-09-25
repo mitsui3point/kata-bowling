@@ -55,4 +55,11 @@ class PinCountTest {
                 .hasMessage(NOT_ALLOWED_MINUS_BREAKDOWN_PARAMETER);
     }
 
+    @Test
+    void rest() {
+        PinCount actual = PinCount.of(10).rest();
+        PinCount expected = PinCount.of(0);
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }

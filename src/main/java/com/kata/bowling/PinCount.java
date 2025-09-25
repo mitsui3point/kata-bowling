@@ -52,4 +52,7 @@ public class PinCount {
         return new PinCount(this.count - down);
     }
 
+    public PinCount rest() {
+        return new PinCount(DEFAULT_COUNT - this.count);
+    }
 }
