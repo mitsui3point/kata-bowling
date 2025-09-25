@@ -2,29 +2,27 @@ package com.kata.bowling;
 
 import org.junit.jupiter.api.Test;
 
-import static com.kata.bowling.RollNo.BELOW_ROLL_NO;
-import static com.kata.bowling.RollNo.EXCEED_ROLL_NO;
+import static com.kata.bowling.FrameNo.BELOW_FRAME_NO;
+import static com.kata.bowling.FrameNo.EXCEED_FRAME_NO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class RollNoTest {
+class FrameNoTest {
     @Test
     void create() {
-        RollNo actual = RollNo.of(1);
-        RollNo expected = RollNo.of(1);
+        FrameNo actual = FrameNo.of(1);
+        FrameNo expected = FrameNo.of(1);
 
         assertThat(actual).isEqualTo(expected);
-
     }
 
-    // 범위 제한
     @Test
     void create_fail_range() {
-        assertThatThrownBy(() -> RollNo.of(22))
+        assertThatThrownBy(() -> FrameNo.of(11))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(EXCEED_ROLL_NO);
-        assertThatThrownBy(() -> RollNo.of(-1))
+                .hasMessage(EXCEED_FRAME_NO);
+        assertThatThrownBy(() -> FrameNo.of(-1))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(BELOW_ROLL_NO);
+                .hasMessage(BELOW_FRAME_NO);
     }
 }

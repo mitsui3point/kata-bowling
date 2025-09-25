@@ -29,7 +29,7 @@
 ## 클래스 설계
 ```
 Game
-    Frame
+    Roll
     :method
         roll()
         score()
