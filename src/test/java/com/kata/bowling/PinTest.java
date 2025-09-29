@@ -14,17 +14,17 @@ class PinTest {
     @Test
     void create() {
         Pin actual = new Pin();
-        Pin expected = Pin.of(10);
+        Pin expected = new Pin(10);
 
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     void create_fail() {
-        assertThatThrownBy(() -> Pin.of(11))
+        assertThatThrownBy(() -> new Pin(11))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_ALLOW_EXCEED_TEN);
-        assertThatThrownBy(() -> Pin.of(-1))
+        assertThatThrownBy(() -> new Pin(-1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_ALLOW_BELOW_ZERO);
     }
@@ -37,7 +37,7 @@ class PinTest {
     void breakDown(int param, int result) {
         Pin pin = new Pin();
         Pin actual = pin.breakDown(param);
-        Pin expected = Pin.of(result);
+        Pin expected = new Pin(result);
 
         assertThat(actual).isEqualTo(expected);
     }

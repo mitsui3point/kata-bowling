@@ -10,7 +10,8 @@ public class Pin {
 
     private final int stand;
 
-    private Pin(int stand) {
+    public Pin(int stand) {
+        validatePin(stand);
         this.stand = stand;
     }
 
@@ -18,18 +19,17 @@ public class Pin {
         this.stand = MAX;
     }
 
-    public static Pin of(int stand) {
+    private static void validatePin(int stand) {
         if (stand > MAX) {
             throw new IllegalArgumentException(NOT_ALLOW_EXCEED_TEN);
         }
         if (stand < MIN) {
             throw new IllegalArgumentException(NOT_ALLOW_BELOW_ZERO);
         }
-        return new Pin(stand);
     }
 
     public Pin breakDown(int stand) {
-        return Pin.of(this.stand - stand);
+        return new Pin(this.stand - stand);
     }
 
     @Override

@@ -50,42 +50,55 @@ Frames
         frameStatus() return FrameStatus (COMMON_FRAME, LAST_FRAME)
     
 Frame
-    Rolls rolls
-    Pin pin
+    Scores scores
+    Pin pin 
     - method
         constructor()
-        addRoll() {
-            new Roll(this)
+        roll(int) {
+            if (rolls.current()) ~
+                rolls.add(new Roll(this))
+            pin.breakDown(int)
         }
-        roll()
-        pin()
+        score() {
+            scores.total()
+        }
+        pin() {
+            pin
+        }
 
-Rolls
-    List<Rolls> rolls
+Scores
+    List<Scores> scores
     - method
         constructor()
         add()
         current() return RollSequence (FIRST, LAST, BONUS)
-        scores()
+        total()
         
-Roll
-    Roll prev
-    Score score
+Score
+    Score prev
+    int value
     - method
-        consturctor(frame, ) {
+        constructor() {
+            // init
+            1
+        }
+        consturctor(frame) {
             // 현재 프레임 check
             if frame.pin() != 0 and
             // 현재 프레임 roll check
-            if frame.roll()
+            if frame.roll() RollSequence
         }
         score
-        status() return Status (STRIKE, SPARE, NOTHING)
+        status() {
+            
+            return Status (STRIKE, SPARE, NOTHING)
+        }
 
 Pin
     int stand
     - method
         constructor()
         breakDown()
-        
+        isAllDown()
 
 ```
